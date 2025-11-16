@@ -916,8 +916,10 @@ class OnboardingViewModel: ObservableObject {
         )
         
         do {
-            _ = try await APIClient.shared.createProfile(profile)
+            let createdProfile = try await APIClient.shared.createProfile(profile)
             await MainActor.run {
+                // Store userId for future use
+                UserDefaults.standard.set(createdProfile.id, forKey: "userId")
                 isCompleted = true
             }
         } catch {

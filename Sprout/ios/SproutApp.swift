@@ -3,29 +3,27 @@ import SwiftUI
 @main
 struct SproutApp: App {
     @StateObject private var viewModel = SproutViewModel()
-    @State private var hasCompletedOnboarding = false
-    @State private var userProfile: UserProfile?
+    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     
     var body: some Scene {
         WindowGroup {
-            if !hasCompletedOnboarding || userProfile == nil {
-                OnboardingView(
-                    isComplete: $hasCompletedOnboarding,
-                    userProfile: $userProfile
-                )
-                .onChange(of: userProfile) { newProfile in
-                    if let profile = newProfile {
-                        viewModel.userProfile = profile
-                        Task {
-                            await viewModel.loadHomeData()
+            if !hasCompletedOnboarding {
+                OnboardingView()
+                    .onChange(of: hasCompletedOnboarding) { completed in
+                        if completed {
+                            // Load profile after onboarding completes
+                            Task {
+                                await viewModel.loadProfile()
+                            }
                         }
                     }
-                }
             } else {
                 RootView()
                     .environmentObject(viewModel)
                     .task {
-                        await viewModel.loadProfile()
+                        if viewModel.userProfile == nil {
+                            await viewModel.loadProfile()
+                        }
                     }
             }
         }

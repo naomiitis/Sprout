@@ -45,8 +45,17 @@ class SproutViewModel: ObservableObject {
         }
     }
     
+    func loadProfile() async {
+        // Load profile using stored userId
+        guard let userId = UserDefaults.standard.string(forKey: "userId") else {
+            errorMessage = "No user ID found. Please complete onboarding."
+            return
+        }
+        await loadProfile(userId: userId)
+    }
+    
     func updateProfile(_ profile: UserProfile) async {
-        guard let userId = profile.id else { return }
+        let userId = profile.id
         isLoading = true
         defer { isLoading = false }
         
