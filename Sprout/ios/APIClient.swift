@@ -54,8 +54,39 @@ class APIClient {
             throw APIError.httpError(httpResponse.statusCode)
         }
         
+        // Handle empty responses (e.g., DELETE requests)
+        if data.isEmpty {
+            // For empty responses, try to decode from empty JSON object
+            if let emptyJSON = "{}".data(using: .utf8) {
+                let decoder = JSONDecoder()
+                return try decoder.decode(T.self, from: emptyJSON)
+            }
+            // If that fails, throw an error
+            throw APIError.decodingError
+        }
+        
         let decoder = JSONDecoder()
         return try decoder.decode(T.self, from: data)
+    }
+    
+    // Helper method for DELETE requests that don't return data
+    private func deleteRequest(endpoint: String) async throws {
+        guard let url = URL(string: "\(baseURL)\(endpoint)") else {
+            throw APIError.invalidURL
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        
+        let (_, response) = try await session.data(for: request)
+        
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw APIError.invalidResponse
+        }
+        
+        guard (200...299).contains(httpResponse.statusCode) else {
+            throw APIError.httpError(httpResponse.statusCode)
+        }
     }
     
     private func createMultipartBody(imageData: Data, boundary: String) -> Data {
@@ -262,6 +293,20 @@ class APIClient {
         return try await request(endpoint: "/grocery-list?userId=\(userId)")
     }
     
+    func categorizeGroceryItem(name: String) async throws -> String {
+        struct Request: Encodable {
+            let itemName: String
+        }
+        
+        struct Response: Codable {
+            let category: String
+        }
+        
+        let requestBody = Request(itemName: name)
+        let response: Response = try await request(endpoint: "/grocery-list/categorize", method: "POST", body: requestBody)
+        return response.category
+    }
+    
     func addGroceryItem(userId: String, item: GroceryItem) async throws -> GroceryItem {
         struct Request: Encodable {
             let userId: String
@@ -271,6 +316,21 @@ class APIClient {
         
         let requestBody = Request(userId: userId, name: item.name, category: item.category)
         return try await request(endpoint: "/grocery-list", method: "POST", body: requestBody)
+    }
+    
+    func updateGroceryItem(userId: String, item: GroceryItem) async throws -> GroceryItem {
+        struct Request: Encodable {
+            let userId: String
+            let name: String
+            let category: String
+        }
+        
+        let requestBody = Request(userId: userId, name: item.name, category: item.category)
+        return try await request(endpoint: "/grocery-list/\(item.id)", method: "PUT", body: requestBody)
+    }
+    
+    func deleteGroceryItem(userId: String, itemId: String) async throws {
+        try await deleteRequest(endpoint: "/grocery-list/\(itemId)?userId=\(userId)")
     }
     
     func scanFridge(image: UIImage, userId: String) async throws -> [GroceryItem] {

@@ -10,6 +10,8 @@ struct ScanView: View {
     @State private var showingAlternatives = false
     @State private var selectedIngredient: IngredientClassification?
     @State private var alternatives: [String] = []
+    @State private var showingSourceUnavailableAlert = false
+    @State private var unavailableSourceMessage = ""
     
     enum ScanMode {
         case ingredients
@@ -115,72 +117,104 @@ struct ScanView: View {
                             }
                         }
                     } else {
-                        VStack(spacing: 32) {
-                            Spacer()
-                            
-                            // Empty state
-                            VStack(spacing: 20) {
-                                ZStack {
-                                    Circle()
-                                        .fill(
-                                            RadialGradient(
-                                                colors: [
-                                                    Color.sproutGreen.opacity(0.2),
-                                                    Color.sproutGreen.opacity(0.1),
-                                                    Color.clear
-                                                ],
-                                                center: .center,
-                                                startRadius: 30,
-                                                endRadius: 100
+                        ScrollView {
+                            VStack(spacing: 32) {
+                                // Recent Scans Carousel
+                                if !vm.recentScans.isEmpty {
+                                    VStack(alignment: .leading, spacing: 12) {
+                                        Text("Recent Scans")
+                                            .font(.system(size: 20, weight: .bold, design: .rounded))
+                                            .foregroundColor(.sproutGreenDark)
+                                            .padding(.horizontal, 20)
+                                        
+                                        ScrollView(.horizontal, showsIndicators: false) {
+                                            HStack(spacing: 16) {
+                                                ForEach(vm.recentScans) { scan in
+                                                    RecentScanCard(scan: scan) {
+                                                        selectedImage = scan.image
+                                                        scanMode = scan.scanType == .ingredients ? .ingredients : .menu
+                                                    }
+                                                }
+                                            }
+                                            .padding(.horizontal, 20)
+                                        }
+                                    }
+                                    .padding(.top, 20)
+                                }
+                                
+                                // Empty state
+                                VStack(spacing: 20) {
+                                    ZStack {
+                                        Circle()
+                                            .fill(
+                                                RadialGradient(
+                                                    colors: [
+                                                        Color.sproutGreen.opacity(0.2),
+                                                        Color.sproutGreen.opacity(0.1),
+                                                        Color.clear
+                                                    ],
+                                                    center: .center,
+                                                    startRadius: 30,
+                                                    endRadius: 100
+                                                )
                                             )
-                                        )
-                                        .frame(width: 200, height: 200)
+                                            .frame(width: 200, height: 200)
+                                        
+                                        Image(systemName: "camera.viewfinder")
+                                            .font(.system(size: 80))
+                                            .foregroundStyle(
+                                                LinearGradient(
+                                                    colors: [Color.sproutGreen, Color.sproutGreenDark],
+                                                    startPoint: .topLeading,
+                                                    endPoint: .bottomTrailing
+                                                )
+                                            )
+                                    }
                                     
-                                    Image(systemName: "camera.viewfinder")
-                                        .font(.system(size: 80))
-                                        .foregroundStyle(
-                                            LinearGradient(
-                                                colors: [Color.sproutGreen, Color.sproutGreenDark],
-                                                startPoint: .topLeading,
-                                                endPoint: .bottomTrailing
-                                            )
-                                        )
+                                    VStack(spacing: 8) {
+                                        Text("Scan Ingredients")
+                                            .font(.system(size: 28, weight: .bold, design: .rounded))
+                                        Text("Scan an ingredient list or menu to see if it fits your preferences.")
+                                            .font(.subheadline)
+                                            .foregroundColor(.secondary)
+                                            .multilineTextAlignment(.center)
+                                            .padding(.horizontal, 40)
+                                    }
                                 }
                                 
-                                VStack(spacing: 8) {
-                                    Text("Scan Ingredients")
-                                        .font(.system(size: 28, weight: .bold, design: .rounded))
-                                    Text("Scan an ingredient list or menu to see if it fits your preferences.")
-                                        .font(.subheadline)
-                                        .foregroundColor(.secondary)
-                                        .multilineTextAlignment(.center)
-                                        .padding(.horizontal, 40)
+                                // Action buttons
+                                VStack(spacing: 16) {
+                                    ScanButton(
+                                        title: "Take a Photo",
+                                        icon: "camera.fill",
+                                        color: .sproutGreen
+                                    ) {
+                                        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                                            sourceType = .camera
+                                            showingImagePicker = true
+                                        } else {
+                                            unavailableSourceMessage = "Camera is not available on this device."
+                                            showingSourceUnavailableAlert = true
+                                        }
+                                    }
+                                    
+                                    ScanButton(
+                                        title: "Upload Image",
+                                        icon: "photo.on.rectangle.angled",
+                                        color: .sproutGreenDark
+                                    ) {
+                                        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                                            sourceType = .photoLibrary
+                                            showingImagePicker = true
+                                        } else {
+                                            unavailableSourceMessage = "Photo library is not available on this device."
+                                            showingSourceUnavailableAlert = true
+                                        }
+                                    }
                                 }
+                                .padding(.horizontal, 20)
+                                .padding(.bottom, 40)
                             }
-                            
-                            // Action buttons
-                            VStack(spacing: 16) {
-                                ScanButton(
-                                    title: "Take a Photo",
-                                    icon: "camera.fill",
-                                    color: .sproutGreen
-                                ) {
-                                    sourceType = .camera
-                                    showingImagePicker = true
-                                }
-                                
-                                ScanButton(
-                                    title: "Upload Image",
-                                    icon: "photo.on.rectangle.angled",
-                                    color: .sproutGreenDark
-                                ) {
-                                    sourceType = .photoLibrary
-                                    showingImagePicker = true
-                                }
-                            }
-                            .padding(.horizontal, 20)
-                            
-                            Spacer()
                         }
                     }
                 }
@@ -190,6 +224,11 @@ struct ScanView: View {
             .sheet(isPresented: $showingImagePicker) {
                 ImagePicker(image: $selectedImage, sourceType: sourceType)
             }
+            .alert("Source Unavailable", isPresented: $showingSourceUnavailableAlert) {
+                Button("OK", role: .cancel) { }
+            } message: {
+                Text(unavailableSourceMessage)
+            }
             .onChange(of: selectedImage) { newImage in
                 if let image = newImage {
                     Task {
@@ -197,6 +236,19 @@ struct ScanView: View {
                             await vm.scanIngredients(image: image)
                         } else {
                             await vm.scanMenu(image: image)
+                        }
+                        // Add to recent scans
+                        if let image = newImage {
+                            let recentScan = RecentScan(
+                                image: image,
+                                scanType: scanMode == .ingredients ? .ingredients : .menu,
+                                timestamp: Date()
+                            )
+                            vm.recentScans.insert(recentScan, at: 0)
+                            // Keep only last 10 scans
+                            if vm.recentScans.count > 10 {
+                                vm.recentScans = Array(vm.recentScans.prefix(10))
+                            }
                         }
                     }
                 }
@@ -395,6 +447,37 @@ struct MenuDishRow: View {
             }
         }
         .padding(.vertical, 8)
+    }
+}
+
+struct RecentScanCard: View {
+    let scan: RecentScan
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            VStack(spacing: 8) {
+                Image(uiImage: scan.image)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 120, height: 120)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(Color.sproutGreen.opacity(0.3), lineWidth: 2)
+                    )
+                
+                HStack(spacing: 4) {
+                    Image(systemName: scan.scanType == .ingredients ? "list.bullet" : "fork.knife")
+                        .font(.caption2)
+                    Text(scan.scanType == .ingredients ? "Ingredients" : "Menu")
+                        .font(.caption)
+                        .fontWeight(.medium)
+                }
+                .foregroundColor(.secondary)
+            }
+        }
+        .buttonStyle(.plain)
     }
 }
 

@@ -18,32 +18,32 @@ struct SettingsView: View {
                 List {
                     Section {
                         NavigationLink {
-                            Text("Eating Style Editor Placeholder")
-                                .navigationTitle("Eating Style")
+                            EatingStyleEditorView()
+                                .environmentObject(vm)
                         } label: {
                             Label("Eating Style (Vegan Level)", systemImage: "leaf.fill")
                                 .foregroundColor(.sproutGreen)
                         }
                         
                         NavigationLink {
-                            Text("Dietary Restrictions Editor Placeholder")
-                                .navigationTitle("Dietary Restrictions")
+                            DietaryRestrictionsEditorView()
+                                .environmentObject(vm)
                         } label: {
                             Label("Dietary Restrictions", systemImage: "exclamationmark.shield.fill")
                                 .foregroundColor(.sproutGreen)
                         }
                         
                         NavigationLink {
-                            Text("Cuisine Preferences Editor Placeholder")
-                                .navigationTitle("Cuisine Preferences")
+                            CuisinePreferencesEditorView()
+                                .environmentObject(vm)
                         } label: {
                             Label("Cuisine Preferences", systemImage: "globe.asia.australia.fill")
                                 .foregroundColor(.sproutGreen)
                         }
                         
                         NavigationLink {
-                            Text("Cooking Style Preferences Editor Placeholder")
-                                .navigationTitle("Cooking Style")
+                            CookingStylePreferencesEditorView()
+                                .environmentObject(vm)
                         } label: {
                             Label("Cooking Style Preferences", systemImage: "flame.fill")
                                 .foregroundColor(.sproutGreen)
@@ -177,9 +177,27 @@ struct ProfileEditView: View {
                 
                 Section {
                     Button {
-                        vm.userName = userName.isEmpty ? vm.userName : userName
-                        vm.sproutName = sproutName.isEmpty ? vm.sproutName : sproutName
-                        dismiss()
+                        guard var profile = vm.userProfile else {
+                            dismiss()
+                            return
+                        }
+                        // Always update with the current text field values
+                        let trimmedUserName = userName.trimmingCharacters(in: .whitespacesAndNewlines)
+                        let trimmedSproutName = sproutName.trimmingCharacters(in: .whitespacesAndNewlines)
+                        
+                        if !trimmedUserName.isEmpty {
+                            profile.userName = trimmedUserName
+                        }
+                        if !trimmedSproutName.isEmpty {
+                            profile.sproutName = trimmedSproutName
+                        }
+                        
+                        Task {
+                            await vm.updateProfile(profile)
+                            await MainActor.run {
+                                dismiss()
+                            }
+                        }
                     } label: {
                         HStack {
                             Spacer()
@@ -204,8 +222,14 @@ struct ProfileEditView: View {
             .scrollContentBackground(.hidden)
         }
         .onAppear {
-            userName = vm.userName
-            sproutName = vm.sproutName
+            // Initialize with actual profile values, not computed property
+            if let profile = vm.userProfile {
+                userName = profile.userName
+                sproutName = profile.sproutName
+            } else {
+                userName = ""
+                sproutName = ""
+            }
         }
         .navigationTitle("Profile")
         .navigationBarTitleDisplayMode(.inline)

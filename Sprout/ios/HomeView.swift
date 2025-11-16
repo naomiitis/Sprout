@@ -269,91 +269,106 @@ struct MissionCardButton: View {
 
 struct MissionsView: View {
     @EnvironmentObject var vm: SproutViewModel
+    @State private var showConfetti = false
+    @State private var completedMissionId: String?
     
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(vm.missions) { mission in
-                    HStack(spacing: 16) {
-                        // Status indicator
-                        ZStack {
-                            Circle()
-                                .fill(mission.isCompleted ? Color.sproutGreen.opacity(0.2) : Color(.secondarySystemBackground))
-                                .frame(width: 44, height: 44)
-                            
-                            Image(systemName: mission.isCompleted ? "checkmark.circle.fill" : "circle")
-                                .font(.system(size: 24))
-                                .foregroundColor(mission.isCompleted ? .sproutGreen : .secondary)
-                        }
-                        
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text(mission.title)
-                                .font(.system(size: 16, weight: .semibold, design: .rounded))
-                                .foregroundColor(.primary)
-                            
-                            HStack(spacing: 16) {
-                                HStack(spacing: 4) {
-                                    Image(systemName: "sparkles")
-                                        .font(.caption2)
-                                    Text("+\(mission.xpReward) XP")
-                                        .font(.caption)
-                                        .fontWeight(.medium)
-                                }
-                                .foregroundColor(.sproutGreenDark)
+            ZStack {
+                List {
+                    ForEach(vm.missions) { mission in
+                        HStack(spacing: 16) {
+                            // Status indicator
+                            ZStack {
+                                Circle()
+                                    .fill(mission.isCompleted ? Color.sproutGreen.opacity(0.2) : Color(.secondarySystemBackground))
+                                    .frame(width: 44, height: 44)
                                 
-                                HStack(spacing: 4) {
-                                    Image(systemName: "circle.grid.2x2.fill")
-                                        .font(.caption2)
-                                    Text("+\(mission.coinReward) coins")
-                                        .font(.caption)
-                                        .fontWeight(.medium)
-                                }
-                                .foregroundColor(.sproutYellow)
+                                Image(systemName: mission.isCompleted ? "checkmark.circle.fill" : "circle")
+                                    .font(.system(size: 24))
+                                    .foregroundColor(mission.isCompleted ? .sproutGreen : .secondary)
                             }
-                        }
-                        
-                        Spacer()
-                        
-                        if !mission.isCompleted {
-                            Button {
-                                withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                                    vm.completeMission(mission)
+                            
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text(mission.title)
+                                    .font(.system(size: 16, weight: .semibold, design: .rounded))
+                                    .foregroundColor(.primary)
+                                
+                                HStack(spacing: 16) {
+                                    HStack(spacing: 4) {
+                                        Image(systemName: "sparkles")
+                                            .font(.caption2)
+                                        Text("+\(mission.xpReward) XP")
+                                            .font(.caption)
+                                            .fontWeight(.medium)
+                                    }
+                                    .foregroundColor(.sproutGreenDark)
+                                    
+                                    HStack(spacing: 4) {
+                                        Image(systemName: "circle.grid.2x2.fill")
+                                            .font(.caption2)
+                                        Text("+\(mission.coinReward) coins")
+                                            .font(.caption)
+                                            .fontWeight(.medium)
+                                    }
+                                    .foregroundColor(.sproutYellow)
                                 }
-                            } label: {
-                                Text("Complete")
-                                    .font(.subheadline)
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(.white)
-                                    .padding(.horizontal, 20)
-                                    .padding(.vertical, 10)
-                                    .background(
-                                        LinearGradient(
-                                            colors: [Color.sproutGreen, Color.sproutGreenDark],
-                                            startPoint: .leading,
-                                            endPoint: .trailing
+                            }
+                            
+                            Spacer()
+                            
+                            if !mission.isCompleted {
+                                Button {
+                                    Task {
+                                        await vm.completeMission(mission)
+                                        completedMissionId = mission.id
+                                        showConfetti = true
+                                        // Hide confetti after animation
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                            showConfetti = false
+                                        }
+                                    }
+                                } label: {
+                                    Text("Complete")
+                                        .font(.subheadline)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.white)
+                                        .padding(.horizontal, 20)
+                                        .padding(.vertical, 10)
+                                        .background(
+                                            LinearGradient(
+                                                colors: [Color.sproutGreen, Color.sproutGreenDark],
+                                                startPoint: .leading,
+                                                endPoint: .trailing
+                                            )
                                         )
-                                    )
-                                    .cornerRadius(12)
+                                        .cornerRadius(12)
+                                }
                             }
                         }
+                        .padding(.vertical, 8)
+                        .listRowBackground(
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(Color(.secondarySystemBackground).opacity(0.5))
+                                .padding(.vertical, 4)
+                        )
                     }
-                    .padding(.vertical, 8)
-                    .listRowBackground(
-                        RoundedRectangle(cornerRadius: 12)
-                            .fill(Color(.secondarySystemBackground).opacity(0.5))
-                            .padding(.vertical, 4)
+                }
+                .listStyle(.insetGrouped)
+                .scrollContentBackground(.hidden)
+                .background(
+                    LinearGradient(
+                        colors: [Color.sproutBackground, Color(.systemBackground)],
+                        startPoint: .top,
+                        endPoint: .bottom
                     )
+                )
+                
+                if showConfetti {
+                    ConfettiView()
+                        .allowsHitTesting(false)
                 }
             }
-            .listStyle(.insetGrouped)
-            .scrollContentBackground(.hidden)
-            .background(
-                LinearGradient(
-                    colors: [Color.sproutBackground, Color(.systemBackground)],
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
-            )
             .navigationTitle("Daily Missions")
             .navigationBarTitleDisplayMode(.inline)
         }

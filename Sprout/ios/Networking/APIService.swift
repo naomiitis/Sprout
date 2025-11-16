@@ -1,3 +1,4 @@
+import Foundation
 
 class APIService {
     static let shared = APIService()
@@ -23,7 +24,7 @@ class APIService {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
-        let body = [
+        let body: [String: Any] = [
             "recipe": ["text": recipeText],
             "chosenSubs": chosenSubs.map { ["original": $0.original, "substitute": $0.substitute] }
         ]

@@ -3,198 +3,242 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A1000001 /* SproutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000002 /* SproutApp.swift */; };
-		A1000003 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000004 /* RootView.swift */; };
-		A1000005 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000006 /* Models.swift */; };
-		A1000007 /* SproutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000008 /* SproutViewModel.swift */; };
-		A1000009 /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000010 /* DesignSystem.swift */; };
-		A1000011 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000012 /* HomeView.swift */; };
-		A1000013 /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000014 /* ScanView.swift */; };
-		A1000015 /* CookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000016 /* CookView.swift */; };
-		A1000017 /* GroceryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000018 /* GroceryListView.swift */; };
-		A1000019 /* SavedRecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000020 /* SavedRecipesView.swift */; };
-		A1000021 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000022 /* SettingsView.swift */; };
-		A1000023 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000024 /* ImagePicker.swift */; };
-		A1000025 /* SproutLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000026 /* SproutLogo.swift */; };
-		A1000027 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000028 /* OnboardingView.swift */; };
-		A1000034 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000035 /* APIClient.swift */; };
-		A1000036 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1000037 /* Assets.xcassets */; };
+		028D94A4F46F37D23A01363F /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = "TEMP_08D109B0-9C45-442E-959C-7BE5108852C8" /* APIClient.swift */; };
+		04E46AB1081CE91DADF7AAD7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = "TEMP_D2E42755-9B2A-495F-9C57-9511BBD27153" /* SettingsView.swift */; };
+		19C23DD9378758966AF65651 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = "TEMP_75FB7A14-8578-4206-A0A8-335835883260" /* HomeView.swift */; };
+		2D936EEAB33263E5BE76A6A8 /* CookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = "TEMP_ABAC681D-BAEE-4EE9-815D-CDF1A5E25448" /* CookView.swift */; };
+		2E02598094F6C5233C1254AE /* PreferenceEditors.swift in Sources */ = {isa = PBXBuildFile; fileRef = "TEMP_0FD98AB6-E55F-49D0-98A1-0F19C87CB9B2" /* PreferenceEditors.swift */; };
+		30537234980AD051752CB69F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = "TEMP_1EC1F166-1744-417D-9539-A3C0FCB299EE" /* ImagePicker.swift */; };
+		53996B838BFD362813D73641 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = "TEMP_3FD81B23-4F72-45D9-846F-65292925F421" /* ConfettiView.swift */; };
+		5B04BC217E4B48E6CFEA3C57 /* GroceryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = "TEMP_5770DB16-5819-478F-9255-77DF56C0502D" /* GroceryListView.swift */; };
+		693875BD37B4732677E7F4A8 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = "TEMP_8215642F-9799-4DDB-9A9B-A6B3E2F05513" /* OnboardingView.swift */; };
+		7E16E88CDB3CE803C947B980 /* Sprout.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = "TEMP_7F6FDDEE-9539-4525-B59A-AA50BA492C5B" /* Sprout.xcodeproj */; };
+		9C2B1F537B9245539A6F28FC /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCD7FF47E71524621DF3DBB /* APIService.swift */; };
+		9DAC4BB2B009FA96CC24FCCA /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = "TEMP_9364B916-EE61-43A7-9477-DE500DA86AB8" /* ScanView.swift */; };
+		BF3A6085C67939622BF10671 /* SproutLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = "TEMP_9CC8F430-09BE-477B-80F1-217B0C96EBB4" /* SproutLogo.swift */; };
+		BFC64D6BA4385633CC06F1C6 /* SavedRecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = "TEMP_1B0BEBAE-0788-46FE-95B0-6270B2E8B58F" /* SavedRecipesView.swift */; };
+		C05B9A5DE7F49FC580E1B597 /* SproutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = "TEMP_5FB94485-C4A2-41C0-8805-024E3022A0E3" /* SproutViewModel.swift */; };
+		C6A2D98AC8E070FE7676B9EA /* SproutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = "TEMP_1670483B-2A4A-417A-AA92-6728B3B29B59" /* SproutApp.swift */; };
+		CA012FAFF6E4BAFBC7B5BA21 /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = "TEMP_0A432E35-7BE6-4767-B2D0-37068BFC53B7" /* DesignSystem.swift */; };
+		E9F5E1A4BAB1335795528EA0 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = "TEMP_8E41A9D2-7833-4462-92F5-738F46C38B1D" /* RootView.swift */; };
+		F486063CDC267D88D9E7AE76 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = "TEMP_CE7090EA-950A-44FD-9D79-568D73EA6774" /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A1000029 /* Sprout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sprout.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A1000002 /* SproutApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SproutApp.swift; sourceTree = "<group>"; };
-		A1000004 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		A1000006 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		A1000008 /* SproutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SproutViewModel.swift; sourceTree = "<group>"; };
-		A1000010 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
-		A1000012 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		A1000014 /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
-		A1000016 /* CookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookView.swift; sourceTree = "<group>"; };
-		A1000018 /* GroceryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListView.swift; sourceTree = "<group>"; };
-		A1000020 /* SavedRecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRecipesView.swift; sourceTree = "<group>"; };
-		A1000022 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		A1000024 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		A1000026 /* SproutLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SproutLogo.swift; sourceTree = "<group>"; };
-		A1000028 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		A1000035 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
-		A1000037 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A1000033 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1FE3642753661630AB2BB3C /* Sprout.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Sprout.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCCD7FF47E71524621DF3DBB /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		"TEMP_08D109B0-9C45-442E-959C-7BE5108852C8" /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		"TEMP_0A432E35-7BE6-4767-B2D0-37068BFC53B7" /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
+		"TEMP_0FD98AB6-E55F-49D0-98A1-0F19C87CB9B2" /* PreferenceEditors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceEditors.swift; sourceTree = "<group>"; };
+		"TEMP_1670483B-2A4A-417A-AA92-6728B3B29B59" /* SproutApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SproutApp.swift; sourceTree = "<group>"; };
+		"TEMP_1B0BEBAE-0788-46FE-95B0-6270B2E8B58F" /* SavedRecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRecipesView.swift; sourceTree = "<group>"; };
+		"TEMP_1EC1F166-1744-417D-9539-A3C0FCB299EE" /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		"TEMP_3FD81B23-4F72-45D9-846F-65292925F421" /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
+		"TEMP_5770DB16-5819-478F-9255-77DF56C0502D" /* GroceryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListView.swift; sourceTree = "<group>"; };
+		"TEMP_5FB94485-C4A2-41C0-8805-024E3022A0E3" /* SproutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SproutViewModel.swift; sourceTree = "<group>"; };
+		"TEMP_75FB7A14-8578-4206-A0A8-335835883260" /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		"TEMP_7F6FDDEE-9539-4525-B59A-AA50BA492C5B" /* Sprout.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Sprout.xcodeproj; sourceTree = "<group>"; };
+		"TEMP_8215642F-9799-4DDB-9A9B-A6B3E2F05513" /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		"TEMP_8E41A9D2-7833-4462-92F5-738F46C38B1D" /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		"TEMP_9364B916-EE61-43A7-9477-DE500DA86AB8" /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
+		"TEMP_9CC8F430-09BE-477B-80F1-217B0C96EBB4" /* SproutLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SproutLogo.swift; sourceTree = "<group>"; };
+		"TEMP_ABAC681D-BAEE-4EE9-815D-CDF1A5E25448" /* CookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookView.swift; sourceTree = "<group>"; };
+		"TEMP_CE7090EA-950A-44FD-9D79-568D73EA6774" /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		"TEMP_D2E42755-9B2A-495F-9C57-9511BBD27153" /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFrameworksBuildPhase section */
-		A1000031 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
 /* Begin PBXGroup section */
-		A1000032 = {
+		03F8FB3E25B961CD35389D63 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				A1000033 /* Sprout */,
-				A1000034 /* Products */,
+				CCCD7FF47E71524621DF3DBB /* APIService.swift */,
 			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
-		A1000034 /* Products */ = {
+		6629E5CDD2AF72FA59CCAA13 = {
 			isa = PBXGroup;
 			children = (
-				A1000029 /* Sprout.app */,
+				03F8FB3E25B961CD35389D63 /* Networking */,
+				A3C8C0699A644DD9E48CC7CE /* Products */,
+				8D1051C32EC9C1DF00B43839 /* Recovered References */,
 			);
+			indentWidth = 4;
+			sourceTree = "<group>";
+			tabWidth = 4;
+			usesTabs = 0;
+		};
+		8D1051C32EC9C1DF00B43839 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				"TEMP_08D109B0-9C45-442E-959C-7BE5108852C8" /* APIClient.swift */,
+				"TEMP_3FD81B23-4F72-45D9-846F-65292925F421" /* ConfettiView.swift */,
+				"TEMP_ABAC681D-BAEE-4EE9-815D-CDF1A5E25448" /* CookView.swift */,
+				"TEMP_0A432E35-7BE6-4767-B2D0-37068BFC53B7" /* DesignSystem.swift */,
+				"TEMP_5770DB16-5819-478F-9255-77DF56C0502D" /* GroceryListView.swift */,
+				"TEMP_75FB7A14-8578-4206-A0A8-335835883260" /* HomeView.swift */,
+				"TEMP_1EC1F166-1744-417D-9539-A3C0FCB299EE" /* ImagePicker.swift */,
+				"TEMP_CE7090EA-950A-44FD-9D79-568D73EA6774" /* Models.swift */,
+				"TEMP_8215642F-9799-4DDB-9A9B-A6B3E2F05513" /* OnboardingView.swift */,
+				"TEMP_0FD98AB6-E55F-49D0-98A1-0F19C87CB9B2" /* PreferenceEditors.swift */,
+				"TEMP_8E41A9D2-7833-4462-92F5-738F46C38B1D" /* RootView.swift */,
+				"TEMP_1B0BEBAE-0788-46FE-95B0-6270B2E8B58F" /* SavedRecipesView.swift */,
+				"TEMP_9364B916-EE61-43A7-9477-DE500DA86AB8" /* ScanView.swift */,
+				"TEMP_D2E42755-9B2A-495F-9C57-9511BBD27153" /* SettingsView.swift */,
+				"TEMP_1670483B-2A4A-417A-AA92-6728B3B29B59" /* SproutApp.swift */,
+				"TEMP_9CC8F430-09BE-477B-80F1-217B0C96EBB4" /* SproutLogo.swift */,
+				"TEMP_5FB94485-C4A2-41C0-8805-024E3022A0E3" /* SproutViewModel.swift */,
+				"TEMP_7F6FDDEE-9539-4525-B59A-AA50BA492C5B" /* Sprout.xcodeproj */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		8D1051C42EC9C1DF00B43839 /* Products */ = {
+			isa = PBXGroup;
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A1000033 /* Sprout */ = {
+		A3C8C0699A644DD9E48CC7CE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A1000002 /* SproutApp.swift */,
-				A1000004 /* RootView.swift */,
-				A1000006 /* Models.swift */,
-				A1000008 /* SproutViewModel.swift */,
-				A1000010 /* DesignSystem.swift */,
-				A1000012 /* HomeView.swift */,
-				A1000014 /* ScanView.swift */,
-				A1000016 /* CookView.swift */,
-				A1000018 /* GroceryListView.swift */,
-				A1000020 /* SavedRecipesView.swift */,
-				A1000022 /* SettingsView.swift */,
-				A1000024 /* ImagePicker.swift */,
-				A1000026 /* SproutLogo.swift */,
-				A1000028 /* OnboardingView.swift */,
-				A1000035 /* APIClient.swift */,
-				A1000037 /* Assets.xcassets */,
-				A1000033 /* Info.plist */,
+				A1FE3642753661630AB2BB3C /* Sprout.app */,
 			);
-			path = .;
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A1000047 /* Sprout */ = {
+		A0A478F3AEF1FB11D68C21A5 /* Sprout */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A1000038 /* Build configuration list for PBXNativeTarget "Sprout" */;
+			buildConfigurationList = 5A3DBF56E848E02A3E7C4439 /* Build configuration list for PBXNativeTarget "Sprout" */;
 			buildPhases = (
-				A1000039 /* Sources */,
-				A1000031 /* Frameworks */,
-				A1000040 /* Resources */,
+				8CCCDC17F05818BF2CB7DA8C /* Sources */,
+				EC69F0736F64C357459CD7F8 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Sprout;
+			packageProductDependencies = (
+			);
 			productName = Sprout;
-			productReference = A1000029 /* Sprout.app */;
+			productReference = A1FE3642753661630AB2BB3C /* Sprout.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A1000041 /* Project object */ = {
+		0005D624A6935E83D7CF28A5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					A1000047 = {
-						CreatedOnToolsVersion = 15.0;
+					A0A478F3AEF1FB11D68C21A5 = {
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = A1000042 /* Build configuration list for PBXProject "Sprout" */;
+			buildConfigurationList = D0B9B0EDDC21CB9F4D24D67F /* Build configuration list for PBXProject "Sprout" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				en,
 			);
-			mainGroup = A1000032;
-			productRefGroup = A1000034 /* Products */;
+			mainGroup = 6629E5CDD2AF72FA59CCAA13;
+			minimizedProjectReferenceProxies = 1;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 8D1051C42EC9C1DF00B43839 /* Products */;
+					ProjectRef = "TEMP_7F6FDDEE-9539-4525-B59A-AA50BA492C5B" /* Sprout.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
-				A1000047 /* Sprout */,
+				A0A478F3AEF1FB11D68C21A5 /* Sprout */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A1000040 /* Resources */ = {
+		EC69F0736F64C357459CD7F8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1000036 /* Assets.xcassets in Resources */,
+				7E16E88CDB3CE803C947B980 /* Sprout.xcodeproj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A1000039 /* Sources */ = {
+		8CCCDC17F05818BF2CB7DA8C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1000001 /* SproutApp.swift in Sources */,
-				A1000003 /* RootView.swift in Sources */,
-				A1000005 /* Models.swift in Sources */,
-				A1000007 /* SproutViewModel.swift in Sources */,
-				A1000009 /* DesignSystem.swift in Sources */,
-				A1000011 /* HomeView.swift in Sources */,
-				A1000013 /* ScanView.swift in Sources */,
-				A1000015 /* CookView.swift in Sources */,
-				A1000017 /* GroceryListView.swift in Sources */,
-				A1000019 /* SavedRecipesView.swift in Sources */,
-				A1000021 /* SettingsView.swift in Sources */,
-				A1000023 /* ImagePicker.swift in Sources */,
-				A1000025 /* SproutLogo.swift in Sources */,
-				A1000027 /* OnboardingView.swift in Sources */,
-				A1000034 /* APIClient.swift in Sources */,
+				028D94A4F46F37D23A01363F /* APIClient.swift in Sources */,
+				9C2B1F537B9245539A6F28FC /* APIService.swift in Sources */,
+				53996B838BFD362813D73641 /* ConfettiView.swift in Sources */,
+				2D936EEAB33263E5BE76A6A8 /* CookView.swift in Sources */,
+				CA012FAFF6E4BAFBC7B5BA21 /* DesignSystem.swift in Sources */,
+				5B04BC217E4B48E6CFEA3C57 /* GroceryListView.swift in Sources */,
+				19C23DD9378758966AF65651 /* HomeView.swift in Sources */,
+				30537234980AD051752CB69F /* ImagePicker.swift in Sources */,
+				F486063CDC267D88D9E7AE76 /* Models.swift in Sources */,
+				693875BD37B4732677E7F4A8 /* OnboardingView.swift in Sources */,
+				2E02598094F6C5233C1254AE /* PreferenceEditors.swift in Sources */,
+				E9F5E1A4BAB1335795528EA0 /* RootView.swift in Sources */,
+				BFC64D6BA4385633CC06F1C6 /* SavedRecipesView.swift in Sources */,
+				9DAC4BB2B009FA96CC24FCCA /* ScanView.swift in Sources */,
+				04E46AB1081CE91DADF7AAD7 /* SettingsView.swift in Sources */,
+				C6A2D98AC8E070FE7676B9EA /* SproutApp.swift in Sources */,
+				BF3A6085C67939622BF10671 /* SproutLogo.swift in Sources */,
+				C05B9A5DE7F49FC580E1B597 /* SproutViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		A1000043 /* Debug */ = {
+		48F95876F0C2B21DE08AB1FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.veganify.Sprout;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8132BCBE446FF9ACBED757E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -224,14 +268,13 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
 					"$(inherited)",
+					"DEBUG=1",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -240,24 +283,47 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		A1000044 /* Release */ = {
+		9653F4D3CADEA1C5253CDFB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.veganify.Sprout;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CDA49747A7360198419068E0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -287,8 +353,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -297,100 +362,38 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		A1000045 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "";
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = Info.plist;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "We need camera access to scan ingredient lists and menus.";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need photo library access to upload images for scanning.";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.veganify.Sprout;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		A1000046 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "";
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = Info.plist;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "We need camera access to scan ingredient lists and menus.";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need photo library access to upload images for scanning.";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.veganify.Sprout;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A1000042 /* Build configuration list for PBXProject "Sprout" */ = {
+		5A3DBF56E848E02A3E7C4439 /* Build configuration list for PBXNativeTarget "Sprout" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A1000043 /* Debug */,
-				A1000044 /* Release */,
+				9653F4D3CADEA1C5253CDFB1 /* Debug */,
+				48F95876F0C2B21DE08AB1FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
-		A1000038 /* Build configuration list for PBXNativeTarget "Sprout" */ = {
+		D0B9B0EDDC21CB9F4D24D67F /* Build configuration list for PBXProject "Sprout" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A1000045 /* Debug */,
-				A1000046 /* Release */,
+				8132BCBE446FF9ACBED757E7 /* Debug */,
+				CDA49747A7360198419068E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = A1000041 /* Project object */;
+	rootObject = 0005D624A6935E83D7CF28A5 /* Project object */;
 }
-

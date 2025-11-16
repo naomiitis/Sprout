@@ -23,8 +23,8 @@ struct OnboardingView: View {
             
             VStack(spacing: 0) {
                 // Progress indicator
-                if currentStep > 0 && currentStep < 7 {
-                    ProgressView(value: Double(currentStep), total: 7)
+                if currentStep > 0 && currentStep < 8 {
+                    ProgressView(value: Double(currentStep), total: 8)
                         .progressViewStyle(.linear)
                         .tint(
                             LinearGradient(
@@ -43,26 +43,28 @@ struct OnboardingView: View {
                     WelcomeStep(currentStep: $currentStep)
                         .tag(0)
                     
-                    EatingStyleStep(viewModel: viewModel, currentStep: $currentStep)
+                    UserNameStep(viewModel: viewModel, currentStep: $currentStep)
                         .tag(1)
                     
-                    DietaryRestrictionsStep(viewModel: viewModel, currentStep: $currentStep)
+                    EatingStyleStep(viewModel: viewModel, currentStep: $currentStep)
                         .tag(2)
                     
-                    CuisinePreferencesStep(viewModel: viewModel, currentStep: $currentStep)
+                    DietaryRestrictionsStep(viewModel: viewModel, currentStep: $currentStep)
                         .tag(3)
                     
-                    CookingStyleStep(viewModel: viewModel, currentStep: $currentStep)
+                    CuisinePreferencesStep(viewModel: viewModel, currentStep: $currentStep)
                         .tag(4)
                     
-                    ReviewStep(viewModel: viewModel, currentStep: $currentStep)
+                    CookingStyleStep(viewModel: viewModel, currentStep: $currentStep)
                         .tag(5)
                     
-                    NameSproutStep(viewModel: viewModel, currentStep: $currentStep)
+                    ReviewStep(viewModel: viewModel, currentStep: $currentStep)
                         .tag(6)
+                    
+                    NameSproutStep(viewModel: viewModel, currentStep: $currentStep)
+                        .tag(7)
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
-                .disabled(true) // Prevent swipe
             }
         }
     }
@@ -118,40 +120,95 @@ struct WelcomeStep: View {
             
             Spacer()
             
-            VStack(spacing: 16) {
-                Button {
-                    withAnimation {
-                        currentStep = 1
-                    }
-                } label: {
-                    Text("Get Started")
-                        .font(.system(size: 18, weight: .semibold, design: .rounded))
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 16)
-                        .background(
-                            LinearGradient(
-                                colors: [Color.sproutGreen, Color.sproutGreenDark],
-                                startPoint: .leading,
-                                endPoint: .trailing
-                            )
+                    Button {
+                        withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                            currentStep = 1 // Go to UserNameStep
+                        }
+                    } label: {
+                Text("Get Started")
+                    .font(.system(size: 18, weight: .semibold, design: .rounded))
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 16)
+                    .background(
+                        LinearGradient(
+                            colors: [Color.sproutGreen, Color.sproutGreenDark],
+                            startPoint: .leading,
+                            endPoint: .trailing
                         )
-                        .cornerRadius(16)
-                        .shadow(color: Color.sproutGreen.opacity(0.3), radius: 8, x: 0, y: 4)
-                }
-                
-                Button {
-                    // TODO: Implement login
-                } label: {
-                    Text("Log In")
-                        .font(.system(size: 18, weight: .semibold, design: .rounded))
-                        .foregroundColor(.sproutGreen)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 16)
-                        .background(Color.sproutGreen.opacity(0.1))
-                        .cornerRadius(16)
-                }
+                    )
+                    .cornerRadius(16)
+                    .shadow(color: Color.sproutGreen.opacity(0.3), radius: 8, x: 0, y: 4)
             }
+            .padding(.horizontal, 32)
+            .padding(.bottom, 60)
+        }
+    }
+}
+
+// MARK: - Step 1: User Name
+
+struct UserNameStep: View {
+    @ObservedObject var viewModel: OnboardingViewModel
+    @Binding var currentStep: Int
+    @State private var userName: String = ""
+    
+    var body: some View {
+        VStack(spacing: 40) {
+            Spacer()
+            
+            VStack(spacing: 20) {
+                Text("How should I call you?")
+                    .font(.system(size: 32, weight: .bold, design: .rounded))
+                    .foregroundColor(.sproutGreenDark)
+                    .multilineTextAlignment(.center)
+                
+                Text("We'd love to personalize your experience")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+            }
+            .padding(.horizontal, 32)
+            
+            VStack(spacing: 16) {
+                TextField("Your name", text: $userName)
+                    .font(.system(size: 18, design: .rounded))
+                    .padding()
+                    .background(Color(.systemBackground))
+                    .cornerRadius(16)
+                    .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 2)
+                    .autocapitalization(.words)
+                    .disableAutocorrection(true)
+            }
+            .padding(.horizontal, 32)
+            
+            Spacer()
+            
+            Button {
+                let trimmed = userName.trimmingCharacters(in: .whitespacesAndNewlines)
+                if !trimmed.isEmpty {
+                    viewModel.data.userName = trimmed
+                    withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                        currentStep = 2 // Go to EatingStyleStep
+                    }
+                }
+            } label: {
+                Text("Continue")
+                    .font(.system(size: 18, weight: .semibold, design: .rounded))
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 16)
+                    .background(
+                        LinearGradient(
+                            colors: [Color.sproutGreen, Color.sproutGreenDark],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                    )
+                    .cornerRadius(16)
+                    .shadow(color: Color.sproutGreen.opacity(0.3), radius: 8, x: 0, y: 4)
+            }
+            .disabled(userName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
             .padding(.horizontal, 32)
             .padding(.bottom, 60)
         }
@@ -194,7 +251,7 @@ struct EatingStyleStep: View {
                 Button {
                     if viewModel.data.eatingStyle != nil {
                         withAnimation {
-                            currentStep = 2
+                            currentStep = 3 // Go to DietaryRestrictionsStep
                         }
                     }
                 } label: {
@@ -361,7 +418,7 @@ struct DietaryRestrictionsStep: View {
                 
                 Button {
                     withAnimation {
-                        currentStep = 3
+                        currentStep = 4 // Go to CuisinePreferencesStep
                     }
                 } label: {
                     Text("Continue")
@@ -494,7 +551,7 @@ struct CuisinePreferencesStep: View {
                 
                 Button {
                     withAnimation {
-                        currentStep = 4
+                        currentStep = 5 // Go to CookingStyleStep
                     }
                 } label: {
                     Text("Continue")
@@ -596,7 +653,7 @@ struct CookingStyleStep: View {
                 
                 Button {
                     withAnimation {
-                        currentStep = 5
+                        currentStep = 6 // Go to ReviewStep
                     }
                 } label: {
                     Text("Continue")
@@ -684,6 +741,11 @@ struct ReviewStep: View {
                 
                 VStack(spacing: 20) {
                     ReviewSection(
+                        title: "Name",
+                        value: viewModel.data.userName.isEmpty ? "Not provided" : viewModel.data.userName
+                    )
+                    
+                    ReviewSection(
                         title: "Eating Style",
                         value: viewModel.data.eatingStyle?.rawValue ?? "Not selected"
                     )
@@ -722,7 +784,7 @@ struct ReviewStep: View {
                     
                     Button {
                         withAnimation {
-                            currentStep = 6
+                            currentStep = 7 // Go to NameSproutStep
                         }
                     } label: {
                         Text("Looks Good")
@@ -777,6 +839,7 @@ struct NameSproutStep: View {
     @Binding var currentStep: Int
     @State private var sproutName: String = ""
     @State private var isCompleting: Bool = false
+    @State private var errorMessage: String?
     
     var body: some View {
         VStack(spacing: 40) {
@@ -866,6 +929,15 @@ struct NameSproutStep: View {
                 }
                 .disabled(sproutName.isEmpty || isCompleting)
                 .padding(.horizontal, 32)
+                
+                // Error message display
+                if let errorMessage = errorMessage {
+                    Text(errorMessage)
+                        .font(.subheadline)
+                        .foregroundColor(.red)
+                        .padding(.horizontal, 32)
+                        .multilineTextAlignment(.center)
+                }
             }
             
             Spacer()
@@ -878,14 +950,24 @@ struct NameSproutStep: View {
     private func completeOnboarding() {
         guard !sproutName.isEmpty else { return }
         isCompleting = true
+        errorMessage = nil
         viewModel.data.sproutName = sproutName
         
         Task {
-            await viewModel.completeOnboarding()
+            let success = await viewModel.completeOnboarding()
             await MainActor.run {
                 isCompleting = false
-                // Onboarding completion is handled by RootView via @AppStorage
-                UserDefaults.standard.set(true, forKey: "hasCompletedOnboarding")
+                if success {
+                    // Only mark onboarding as complete if userId was successfully stored
+                    UserDefaults.standard.set(true, forKey: "hasCompletedOnboarding")
+                } else {
+                    // Show error to user
+                    #if DEBUG
+                    errorMessage = "Backend server not available. Please ensure the backend is running on http://localhost:4000"
+                    #else
+                    errorMessage = "Failed to create profile. Please check your connection and try again."
+                    #endif
+                }
             }
         }
     }
@@ -897,12 +979,12 @@ class OnboardingViewModel: ObservableObject {
     @Published var data = OnboardingData()
     @Published var isCompleted = false
     
-    func completeOnboarding() async {
-        guard let eatingStyle = data.eatingStyle else { return }
+    func completeOnboarding() async -> Bool {
+        guard let eatingStyle = data.eatingStyle else { return false }
         
         let profile = UserProfile(
             id: UUID().uuidString,
-            userName: "User", // Will be updated later
+            userName: data.userName.isEmpty ? "User" : data.userName,
             eatingStyle: eatingStyle.rawValue,
             dietaryRestrictions: data.dietaryRestrictions,
             cuisinePreferences: data.cuisinePreferences,
@@ -922,12 +1004,30 @@ class OnboardingViewModel: ObservableObject {
                 UserDefaults.standard.set(createdProfile.id, forKey: "userId")
                 isCompleted = true
             }
+            return true
         } catch {
+            // Log detailed error for debugging
             print("Error completing onboarding: \(error)")
-            // Handle error - for now, still mark as completed
+            if let apiError = error as? APIError {
+                print("API Error: \(apiError.errorDescription ?? "Unknown")")
+            }
+            
+            // For development: If backend is not available, create profile locally
+            #if DEBUG
+            print("⚠️ Backend not available. Creating profile locally for development.")
             await MainActor.run {
+                // Store userId locally for development
+                UserDefaults.standard.set(profile.id, forKey: "userId")
                 isCompleted = true
             }
+            return true
+            #else
+            // In production, don't mark as completed if API call fails
+            await MainActor.run {
+                isCompleted = false
+            }
+            return false
+            #endif
         }
     }
 }

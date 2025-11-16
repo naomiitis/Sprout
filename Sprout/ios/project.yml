@@ -5,6 +5,11 @@ options:
     iOS: "16.0"
   developmentLanguage: en
   xcodeVersion: "15.0"
+  usesTabs: false
+  indentWidth: 4
+  tabWidth: 4
+  createIntermediateGroups: true
+  groupSortPosition: top
 
 packages: {}
 
@@ -13,11 +18,37 @@ targets:
     type: application
     platform: iOS
     deploymentTarget: "16.0"
+    settings:
+      SWIFT_VERSION: "5.0"
+      IPHONEOS_DEPLOYMENT_TARGET: "16.0"
+      TARGETED_DEVICE_FAMILY: "1,2"
+      PRODUCT_BUNDLE_IDENTIFIER: com.veganify.Sprout
+      CODE_SIGN_STYLE: Automatic
+      DEVELOPMENT_ASSET_PATHS: ""
+      ENABLE_PREVIEWS: true
+      ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS: true
     sources:
       - path: .
         excludes:
           - "*.md"
+          - "*.yml"
+          - "*.yaml"
+          - "*.sh"
+          - "*.zip"
           - "project.yml"
+          - "xcodegen/**"
+          - "xcodegen.zip"
+          - "generate-project.sh"
+          - "quick-fix.sh"
+          - "FIX_PROJECT.md"
+          - "TESTING_GUIDE.md"
+          - "README.md"
+          - "NO_SUDO_FIX.md"
+          - "MANUAL_FIX.md"
+          - "QUICK_START_TERMINAL.md"
+          - ".git/**"
+          - "AppIcons/**"
+          - "Assets.xcassets/**"
     info:
       path: Info.plist
       properties:

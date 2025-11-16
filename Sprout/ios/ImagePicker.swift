@@ -33,7 +33,22 @@ struct ImagePicker: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let picker = UIImagePickerController()
         picker.delegate = context.coordinator
-        picker.sourceType = sourceType
+        
+        // Check if the requested source type is available
+        if UIImagePickerController.isSourceTypeAvailable(sourceType) {
+            picker.sourceType = sourceType
+        } else {
+            // Fallback to camera if photo library is not available
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                picker.sourceType = .camera
+            } else {
+                // If neither is available, use photo library as last resort (will show error if not available)
+                picker.sourceType = .photoLibrary
+            }
+        }
+        
+        picker.allowsEditing = false
+        picker.mediaTypes = ["public.image"]
         return picker
     }
     

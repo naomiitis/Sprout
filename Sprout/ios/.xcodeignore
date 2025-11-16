@@ -1,0 +1,15 @@
+# Files to ignore in Xcode project
+*.md
+*.yml
+*.yaml
+*.sh
+xcodegen/
+.git/
+AppIcons/
+generate-project.sh
+quick-fix.sh
+FIX_PROJECT.md
+TESTING_GUIDE.md
+MANUAL_FIX.md
+.xcodeignore
+

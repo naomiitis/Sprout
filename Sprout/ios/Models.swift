@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 // MARK: - Models
 
@@ -30,7 +31,7 @@ enum EatingStyle: String, CaseIterable, Identifiable {
     }
 }
 
-struct UserProfile: Codable {
+struct UserProfile: Codable, Equatable {
     var id: String
     var userName: String
     var eatingStyle: String
@@ -95,6 +96,15 @@ struct GroceryItem: Identifiable, Codable {
     var category: String
     var isChecked: Bool
     var userId: String?
+    
+    // Allow creating mutable copies for editing
+    init(id: String = UUID().uuidString, name: String, category: String, isChecked: Bool = false, userId: String? = nil) {
+        self.id = id
+        self.name = name
+        self.category = category
+        self.isChecked = isChecked
+        self.userId = userId
+    }
 }
 
 enum GroceryCategory: String, CaseIterable, Identifiable {
@@ -145,15 +155,23 @@ enum IngredientStatus: String, Codable {
 }
 
 struct IngredientClassification: Identifiable, Codable {
-    let id = UUID()
+    let id: UUID
     let name: String
     let status: IngredientStatus
     let reason: String
     let suggestions: [String]?
+    
+    init(id: UUID = UUID(), name: String, status: IngredientStatus, reason: String, suggestions: [String]? = nil) {
+        self.id = id
+        self.name = name
+        self.status = status
+        self.reason = reason
+        self.suggestions = suggestions
+    }
 }
 
 struct MenuDish: Identifiable, Codable {
-    let id = UUID()
+    let id: UUID
     let name: String
     let status: DishStatus
     let modificationSuggestion: String?
@@ -163,11 +181,33 @@ struct MenuDish: Identifiable, Codable {
         case modifiable = "modifiable"
         case notSuitable = "not_suitable"
     }
+    
+    init(id: UUID = UUID(), name: String, status: DishStatus, modificationSuggestion: String? = nil) {
+        self.id = id
+        self.name = name
+        self.status = status
+        self.modificationSuggestion = modificationSuggestion
+    }
+}
+
+// MARK: - Recent Scan Models
+
+struct RecentScan: Identifiable {
+    let id = UUID()
+    let image: UIImage
+    let scanType: ScanType
+    let timestamp: Date
+    
+    enum ScanType {
+        case ingredients
+        case menu
+    }
 }
 
 // MARK: - Onboarding Models
 
 struct OnboardingData {
+    var userName: String = ""
     var eatingStyle: EatingStyle?
     var dietaryRestrictions: [String] = []
     var cuisinePreferences: [String] = []
